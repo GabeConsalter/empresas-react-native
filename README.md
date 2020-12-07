@@ -25,7 +25,7 @@ yarn android && yarn start
 
 **IMPORTANTE:** Esse aplicativo foi testado somente em **Android**, ainda não é recomendada a execução em **iOS**.
 
-## Biblitecas utilizadas
+## Bibliotecas utilizadas
 
 ### @react-native-async-storage/async-storage
 Utilizada para armazenamento local rápido de chaves de autenticação da api.
