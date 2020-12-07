@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 import { MainNavigator, SignNavigator } from './Router';
 import AuthContext from './contexts/AuthContext';
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={authContext}>
+      <StatusBar translucent backgroundColor="transparent" />
       <NavigationContainer>
         {user ? <MainNavigator /> : <SignNavigator />}
       </NavigationContainer>
