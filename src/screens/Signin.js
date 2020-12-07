@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Linking } from 'react-native';
 import styled from 'styled-components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Logo, Input, Button } from '../components';
 import api from '../services/api';
@@ -19,7 +20,7 @@ function Signin() {
     setLoading(true);
 
     try {
-      const { data: user } = await api.post('/users/auth/sign_in', { email, password });
+      const { data: user, headers } = await api.post('/users/auth/sign_in', { email, password });
 
       if (!user.success) {
         setError('Ocorreu algum problema, aguarde e tente novamente');
@@ -39,6 +40,10 @@ function Signin() {
       });
 
       await User.save();
+      await AsyncStorage.setItem('access-token', headers['access-token']);
+      await AsyncStorage.setItem('client', headers.client);
+      await AsyncStorage.setItem('uid', headers.uid);
+
       ctxSignin(User);
 
       setLoading(false);
