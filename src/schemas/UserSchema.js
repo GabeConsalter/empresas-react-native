@@ -47,6 +47,16 @@ class UserSchema {
     const realm = await getRealm();
     return realm.objects('User')[0];
   }
+
+  /**
+   * Deletes the User
+   */
+  static async delete() {
+    const realm = await getRealm();
+    const users = realm.objects('User');
+
+    realm.write(() => realm.delete(users));
+  }
 }
 
 UserSchema.schema = {
