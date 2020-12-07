@@ -7,7 +7,7 @@ function Input(props) {
   return (
     <Container>
       <Label>{label}</Label>
-      <TextInput {...props} />
+      <TextInput {...props} placeholderTextColor="grey" />
     </Container>
   );
 }
