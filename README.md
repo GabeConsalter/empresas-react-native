@@ -2,60 +2,61 @@
 
 # Desafio React Native - ioasys
 
-Este documento `README.md` tem como objetivo fornecer as informações necessárias para realização do projeto Empresas.
+Este documento `README.md` tem como objetivo fornecer as informações necessárias para a apresentação do app **empresas** desenvolvido no desafio de React Native ioasys.
 
 ---
 
-### Objetivo ###
+## Execução
 
-* Desenvolver uma aplicação React Native que consuma a API `Empresas`, cujo Postman esta compartilhado neste repositório (collection).
-* Você deve realizar um fork deste repositório e, ao finalizar, enviar o link do seu repositório para a nossa equipe. Lembre-se, **NÃO** é necessário criar um Pull Request para isso.
-* Nós iremos realizar a avaliação e te retornar um email com o resultado.
+### Clone esse projeto
+```bash
+git clone https://github.com/gabeconsalter/empresas-react-native
+```
 
+### Instale as dependências
+```bash
+cd empresas-react-native && yarn
+```
 
-### O que será avaliado?
-* A ideia com este teste é ter um melhor entendimento das suas habilidades com Javascript e React Native. Mas de qualquer forma, um layout bonito e com boa usabilidade é **MUITO** bem vindo.
-- A qualidade e desempenho do seu código
-- Sua capacidade de organizar o código
-- Capacidade de tomar decisões
+### Execute o aplicativo em Android
+```bash
+yarn android && yarn start
+```
 
+**IMPORTANTE:** Esse aplicativo foi testado somente em **Android**, ainda não é recomendada a execução em **iOS**.
 
-### Escopo do Projeto
-* O Login e acesso de Usuário já registrados
-	* Para o login usamos padrões OAuth 2.0. Na resposta de sucesso do login a api retornará 3 custom headers:
-		* `access-token`;
-		* `client`;
-		* `uid`;
-	* Para ter acesso às demais APIs precisamos enviar esses 3 (três) custom headers para a API autorizar a requisição;
-* Endpoints disponíveis:
-	* Listagem de Empresas: `/enterprises`
-	* Detalhamento de Empresas: `/enterprises/{id}`
-	* Filtro de Empresas por nome e tipo: `/enterprises?enterprise_types={type}&name={name}`
-* Gostaríamos que todos os três endpoints disponibilizados fossem utilizados.
+## Biblitecas utilizadas
 
-### Dados para Teste ###
-* Servidor: http://empresas.ioasys.com.br
-* Versão da API: v1
-* Usuário de Teste: testeapple@ioasys.com.br
-* Senha de Teste : 12341234
+### @react-native-async-storage/async-storage
+Utilizada para armazenamento local rápido de chaves de autenticação da api.
 
-### Informações Importantes
-* Integração disponível a partir de uma collection para Postman (https://www.getpostman.com/apps) disponível neste repositório. Para utilizar a collection, vá até o postman e importe a colllection que está disponível neste repositório. Assim você terá acesso às documentação da API.
-* É obrigatório utilização do React Native
-* A sua aplicação deve possuir mais de uma tela. Entretanto, a disposição do conteúdo entre elas fica ao seu critério.
-* O `README.md` deve conter uma pequena justificativa de cada biblioteca adicionada ao projeto como dependência.
-* O `README.md` do projeto deve conter instruções de como executar a aplicação
-* Independente de onde conseguiu chegar no teste, é importante compartilhar o ponto em que você parou para analisarmos.
+### @react-navigation/native
+Utilizada para a criação da estrutura de navegação.
 
-### Dicas
-* No Postman existem alguns parâmetros no header que devem ser passados em todas requests exceto na de login, eles serão retornados no endpoint de login, nos headers da request.
-* Evite utilizar muitas bibliotecas que não sejam diretamente relacionadas ao build da aplicação. O uso das mesmas não esta vetado, mas seria interessante ver como você faz seus componentes :)
+### @react-navigation/bottom-tabs
+Utilizada para a criação da estrutura de navegação, em específico para estrutura de tabs.
 
-### Bônus
-* Utilização de Redux / Redux Saga.
-* Utilização de linters ou outras ferramentas de análise estática
-* Testes unitários, interface, etc.
+### @react-navigation/stack
+Utilizada para a criação da estrutura de navegação, em específico para a estrutura de telas.
 
-### Sobrou tempo?
-Aqui na **ioasys** nós prezamos muito pela autonomia e contribuição dos nossos funcionários. Então, caso tenha sobrado tempo, sinta-se livre para sugerir alguma melhoria neste desafio :)
+### axios
+Utilizada para estruturar e configurar as chamadas da api.
 
+### eslint
+Utilizada para aplicar linters e análise estática.
+
+### eslint-config-airbnb
+Utilizada para aplicar o style guide do Airbnb como padrão.
+
+### react-native-vector-icons
+Utilizada para aplicar ícones FontAwesome5.
+
+### realm
+Utilizada para implementação de banco de dados local para armazenamento de usuário.
+
+### styled-components
+Utilizada para estruturar e criar a estilização de componentes.
+
+---
+
+## @GabeConsalter
