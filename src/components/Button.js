@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { ActivityIndicator } from 'react-native';
 
-function Button({ text }) {
+function Button(props) {
+  const {
+    text, loading, disabled, onPress,
+  } = props;
+
   return (
-    <Container>
-      <Text>{text}</Text>
+    <Container disabled={disabled || loading} onPress={() => onPress()}>
+      {!loading ? (
+        <Text>{text}</Text>
+      ) : (
+        <ActivityIndicator color="white" />
+      )}
     </Container>
   );
 }
@@ -28,6 +37,14 @@ const Text = styled.Text`
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  loading: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+  loading: false,
+  disabled: false,
 };
 
 export default Button;
