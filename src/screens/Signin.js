@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StatusBar, Linking } from 'react-native';
+import { Linking } from 'react-native';
 import styled from 'styled-components';
 
 import { Logo, Input, Button } from '../components';
@@ -8,8 +8,8 @@ import { UserSchema } from '../schemas';
 import AuthContext from '../contexts/AuthContext';
 
 function Signin() {
-  const [email, setEmail] = useState('testeapple@ioasys.com.br');
-  const [password, setPassword] = useState('12341234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -50,7 +50,6 @@ function Signin() {
 
   return (
     <Container>
-      <StatusBar translucent backgroundColor="transparent" />
       <Logo />
       <Input
         value={email}
