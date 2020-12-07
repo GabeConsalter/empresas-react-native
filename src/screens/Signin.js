@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StatusBar, Linking } from 'react-native';
 import styled from 'styled-components';
 
 import { Logo, Input, Button } from '../components';
 import api from '../services/api';
+import { UserSchema } from '../schemas';
+import AuthContext from '../contexts/AuthContext';
 
 function Signin() {
   const [email, setEmail] = useState('testeapple@ioasys.com.br');
@@ -11,14 +13,37 @@ function Signin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { signin: ctxSignin } = useContext(AuthContext);
+
   async function signin() {
     setLoading(true);
 
     try {
       const { data: user } = await api.post('/users/auth/sign_in', { email, password });
 
+      if (!user.success) {
+        setError('Ocorreu algum problema, aguarde e tente novamente');
+        setLoading(false);
+        return;
+      }
+
+      const { investor } = user;
+
+      const User = new UserSchema({
+        ...investor,
+        name: investor.investor_name,
+        enterprises: investor.portfolio.enterprises,
+        portfolioValue: investor.portfolio_value,
+        firstAccess: investor.first_access,
+        superAngel: investor.super_angel,
+      });
+
+      await User.save();
+      ctxSignin(await UserSchema.get());
+
       setLoading(false);
     } catch (e) {
+      console.log(e);
       setError('Usuário e/ou senha incorretos');
       setLoading(false);
     }
