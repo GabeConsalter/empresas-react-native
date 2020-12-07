@@ -14,6 +14,8 @@ function List(props) {
           <Photo source={{ uri: `${config.api.host}/${item.photo}` }} />
           <Content>
             <Title>{item.enterprise_name}</Title>
+            <Subtitle>{`${item.city}, ${item.country}`}</Subtitle>
+            <More>{`${item.enterprise_type.enterprise_type_name}\n$${parseFloat(item.share_price).toFixed(2)}`}</More>
           </Content>
         </Item>
       )) : (
@@ -69,6 +71,21 @@ const Title = styled.Text`
   color: white;
   font-weight: bold;
   font-size: 18px;
+`;
+
+const Subtitle = styled.Text`
+  color: white;
+  font-size: 15px;
+`;
+
+const More = styled.Text`
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  text-align: right;
 `;
 
 const NoDataMessage = styled.Text`
