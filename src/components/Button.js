@@ -27,6 +27,7 @@ const Container = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   margin: 16px 0;
+  opacity: ${(props) => (props.disabled ? 0.3 : 1)}
 `;
 
 const Text = styled.Text`
