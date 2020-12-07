@@ -119,7 +119,7 @@ const Types = styled.ScrollView`
 `;
 
 const TypeContainer = styled.TouchableOpacity`
-  background-color: ${(props) => (props.selected ? '#985AF9' : '#121212')};
+  background-color: ${(props) => (props.selected ? '#985AF9' : '#00000055')};
   margin-right: 6px;
   border-radius: 7px;
   padding: 16px 10px;
