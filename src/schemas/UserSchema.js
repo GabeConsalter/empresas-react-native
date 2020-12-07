@@ -26,7 +26,7 @@ class UserSchema {
     this.city = user.city;
     this.country = user.country;
     this.balance = user.balance;
-    this.double = user.double;
+    this.portfolioValue = user.portfolioValue;
     this.firstAccess = user.firstAccess;
     this.superAngel = user.superAngel;
     this.enterprises = user.enterprises ? user.enterprises : [];
