@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import api from '../services/api';
 import { Input, List } from '../components';
 
-function Enterprises() {
+function Enterprises({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [enterprises, setEnterprises] = useState([]);
   const [types, setTypes] = useState([]);
@@ -100,11 +101,21 @@ function Enterprises() {
       {loading ? (
         <ActivityIndicator color="white" size="large" />
       ) : (
-        <List items={enterprises} noDataMessage="no enterprise found" />
+        <List
+          items={enterprises}
+          noDataMessage="no enterprise found"
+          onSelectItem={(item) => navigation.navigate('Enterprise', { enterpriseId: item.id })}
+        />
       )}
     </Container>
   );
 }
+
+Enterprises.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const Container = styled.View`
   background-color: #1E2039;

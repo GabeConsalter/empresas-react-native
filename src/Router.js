@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import { Signin, Enterprises, Profile } from './screens';
+import { Signin, Enterprises, Profile, Enterprise } from './screens';
 
 function SignNavigator() {
   const Stack = createStackNavigator();
@@ -14,9 +14,7 @@ function SignNavigator() {
       <Stack.Screen
         name="Signin"
         component={Signin}
-        options={{
-          headerShown: false,
-        }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
@@ -38,6 +36,15 @@ function MainNavigator() {
               backgroundColor: '#1E2039',
             },
             headerTintColor: 'white',
+          }}
+        />
+        <Stack.Screen
+          name="Enterprise"
+          component={Enterprise}
+          options={{
+            headerTransparent: true,
+            headerTintColor: 'white',
+            headerTitle: '',
           }}
         />
       </Stack.Navigator>

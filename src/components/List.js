@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import config from '../config';
 
 function List(props) {
-  const { items, noDataMessage } = props;
+  const { items, noDataMessage, onSelectItem } = props;
 
   return (
     <Container>
       {items.length ? items.map((item) => (
-        <Item key={item.id}>
+        <Item key={item.id} onPress={() => onSelectItem(item)}>
           <Photo source={{ uri: `${config.api.host}/${item.photo}` }} />
           <Content>
             <Title>{item.enterprise_name}</Title>
@@ -31,6 +31,7 @@ List.propTypes = {
     enterprise_name: PropTypes.string.isRequired,
   })).isRequired,
   noDataMessage: PropTypes.string,
+  onSelectItem: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
