@@ -39,11 +39,10 @@ function Signin() {
       });
 
       await User.save();
-      ctxSignin(await UserSchema.get());
+      ctxSignin(User);
 
       setLoading(false);
     } catch (e) {
-      console.log(e);
       setError('Usuário e/ou senha incorretos');
       setLoading(false);
     }
